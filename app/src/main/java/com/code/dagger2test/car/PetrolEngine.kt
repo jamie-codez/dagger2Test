@@ -1,6 +1,7 @@
-package com.code.dagger2test
+package com.code.dagger2test.car
 
 import android.util.Log
+import com.code.dagger2test.car.Engine
 import javax.inject.Inject
 
 private const val TAG = "PetrolEngine"
