@@ -5,8 +5,8 @@ import com.code.dagger2test.car.Engine
 import javax.inject.Inject
 
 private const val TAG = "DieselEngine"
-class DieselEngine @Inject constructor() : Engine {
+class DieselEngine constructor(private val horsePower:Int) : Engine {
     override fun start() {
-        Log.d(TAG, "Diesel engine started....")
+        Log.d(TAG, "Diesel engine started....\n Horsepower: $horsePower")
     }
 }

@@ -1,11 +1,15 @@
 package com.code.dagger2test.di
 
+import com.code.dagger2test.car.DieselEngine
 import com.code.dagger2test.car.Engine
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import javax.inject.Inject
 
 @Module
-abstract class PetrolEngineModule {
-    @Binds
-    abstract fun bindPetrolEngine(petrolEngine: PetrolEngine): Engine
+class PetrolEngineModule @Inject constructor(private val horsePower:Int) {
+    @Provides
+    fun providePetrolEngine(): Engine{
+        return DieselEngine(horsePower)
+    }
 }

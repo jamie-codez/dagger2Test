@@ -3,6 +3,10 @@ package com.code.dagger2test
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.code.dagger2test.car.Car
+import com.code.dagger2test.car.PetrolEngine
+import com.code.dagger2test.di.DaggerCarComponent
+import com.code.dagger2test.di.DieselEngineModule
+import com.code.dagger2test.di.PetrolEngineModule
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -10,7 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val carComponent = DaggerCarComponent.create()
+        val carComponent = DaggerCarComponent.builder()
+            .petrolEngineModule(PetrolEngineModule(200))
+            .build()
 //        car = carComponent.getCar()
         carComponent.inject(this@MainActivity)
         car.drive()
